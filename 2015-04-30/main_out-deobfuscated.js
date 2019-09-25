@@ -1,4 +1,4 @@
-function ba() {
+function loadHandler() {
 	x = J = document.getElementById("canvas");
 	d = x.getContext("2d");
 	x.onmousedown = function(a) {
@@ -536,5 +536,5 @@ else {
 			}
 		}
 	};
-	window.onload = ba
+	window.onload = loadHandler;
 }
