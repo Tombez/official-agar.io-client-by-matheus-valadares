@@ -168,8 +168,8 @@ function ha(a) {
 }
 
 function U() {
-	if (null != g && g.readyState == g.OPEN && ($ != mouseMapX || aa != mouseMapY)) {
-		$ = mouseMapX;
+	if (null != g && g.readyState == g.OPEN && (mouseSentX != mouseMapX || aa != mouseMapY)) {
+		mouseSentX = mouseMapX;
 		aa = mouseMapY;
 		var a = new ArrayBuffer(21),
 			c = new DataView(a);
@@ -368,7 +368,7 @@ else {
 		jQuery("#overlays").hide()
 	};
 	window.connect = X;
-	var $ = -1,
+	var mouseSentX = -1,
 		aa = -1,
 		y = null,
 		v = 1,
