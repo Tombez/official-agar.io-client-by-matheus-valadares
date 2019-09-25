@@ -182,11 +182,11 @@ function U() {
 }
 
 function Y() {
-	if (null != g && g.readyState == g.OPEN && null != D) {
-		var a = new ArrayBuffer(1 + 2 * D.length),
+	if (null != g && g.readyState == g.OPEN && null != nick) {
+		var a = new ArrayBuffer(1 + 2 * nick.length),
 			c = new DataView(a);
 		c.setUint8(0, 0);
-		for (var b = 0; b < D.length; ++b) c.setUint16(1 + 2 * b, D.charCodeAt(b), true);
+		for (var b = 0; b < nick.length; ++b) c.setUint16(1 + 2 * b, nick.charCodeAt(b), true);
 		g.send(a)
 	}
 }
@@ -356,14 +356,14 @@ else {
 		G = -1,
 		ka = 0,
 		B = 0,
-		D = null,
+		nick = null,
 		Q = 0,
 		R = 0,
 		S = 1E4,
 		T = 1E4,
 		p = 1;
 	window.setNick = function(a) {
-		D = a;
+		nick = a;
 		Y();
 		jQuery("#overlays").hide()
 	};
