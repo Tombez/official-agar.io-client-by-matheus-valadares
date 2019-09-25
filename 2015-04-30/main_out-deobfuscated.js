@@ -53,7 +53,7 @@ function N() {
 		},
 		dataType: "text",
 		method: "GET",
-		cache: !1
+		cache: false
 	})
 }
 
@@ -391,8 +391,8 @@ else {
 		updateTime: 0,
 		updateCode: 0,
 		drawTime: 0,
-		destroyed: !1,
-		isVirus: !1,
+		destroyed: false,
+		isVirus: false,
 		destroy: function() {
 			var a;
 			for (a = 0; a < l.length; a++)
@@ -466,7 +466,7 @@ else {
 				var b = d[e].v,
 					k = d[(e - 1 + g) % g].v,
 					h = d[(e + 1) % g].v,
-					l = !1,
+					l = false,
 					m = this,
 					n = a[e].x,
 					p = a[e].y;
