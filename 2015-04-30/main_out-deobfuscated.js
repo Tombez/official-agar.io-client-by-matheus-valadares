@@ -119,7 +119,7 @@ function fa(a) {
 			ia();
 			break;
 		case 64:
-			mapMinX = f.getFloat64(1, true), mapMinY = f.getFloat64(9, true), S = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == myCells.length && (cameraX = (S + mapMinX) / 2, cameraY = (T + mapMinY) / 2)
+			mapMinX = f.getFloat64(1, true), mapMinY = f.getFloat64(9, true), mapMaxX = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == myCells.length && (cameraX = (mapMaxX + mapMinX) / 2, cameraY = (T + mapMinY) / 2)
 	}
 }
 
@@ -359,7 +359,7 @@ else {
 		nick = null,
 		mapMinX = 0,
 		mapMinY = 0,
-		S = 1E4,
+		mapMaxX = 1E4,
 		T = 1E4,
 		p = 1;
 	window.setNick = function(a) {
@@ -478,7 +478,7 @@ else {
 				}, function(a) {
 					a.c != m && 25 > (n - a.x) * (n - a.x) + (p - a.y) * (p - a.y) && (l = true)
 				});
-				!l && (a[e].x < mapMinX || a[e].y < mapMinY || a[e].x > S || a[e].y > T) && (l = true);
+				!l && (a[e].x < mapMinX || a[e].y < mapMinY || a[e].x > mapMaxX || a[e].y > T) && (l = true);
 				l && (0 < c[e] && (c[e] = 0), c[e] -= 1);
 				b += c[e];
 				0 > b && (b = 0);
