@@ -62,7 +62,7 @@ function da() {
 }
 
 function X(a) {
-	C = [];
+	myCellIds = [];
 	h = [];
 	cellsById = {};
 	cells = [];
@@ -112,7 +112,7 @@ function fa(a) {
 			ha(f);
 			break;
 		case 32:
-			C.push(f.getUint32(1, true));
+			myCellIds.push(f.getUint32(1, true));
 			break;
 		case 48:
 			for (leaderboardNames = []; b < f.byteLength;) leaderboardNames.push(c());
@@ -157,7 +157,7 @@ function ha(a) {
 		m.ny = e;
 		m.nSize = k;
 		m.updateCode = c;
-		m.updateTime = B; - 1 != C.indexOf(f) && -1 == h.indexOf(m) && (document.getElementById("overlays").style.display = "none", h.push(m), 1 == h.length && (s = m.x, t = m.y))
+		m.updateTime = B; - 1 != myCellIds.indexOf(f) && -1 == h.indexOf(m) && (document.getElementById("overlays").style.display = "none", h.push(m), 1 == h.length && (s = m.x, t = m.y))
 	}
 	a.getUint16(b, true);
 	b += 2;
@@ -344,7 +344,7 @@ else {
 		socket = null,
 		s = 0,
 		t = 0,
-		C = [],
+		myCellIds = [],
 		h = [],
 		cellsById = {},
 		cells = [],
@@ -401,7 +401,7 @@ else {
 					break
 				} delete cellsById[this.id];
 			a = h.indexOf(this); - 1 != a && h.splice(a, 1);
-			a = C.indexOf(this.id); - 1 != a && C.splice(a, 1);
+			a = myCellIds.indexOf(this.id); - 1 != a && myCellIds.splice(a, 1);
 			this.destroyed = true;
 			deadCells.push(this)
 		},
