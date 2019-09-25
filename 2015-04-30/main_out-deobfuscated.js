@@ -213,7 +213,7 @@ function ja() {
 
 function O() {
 	var a = +new Date;
-	++ka;
+	++frameCount;
 	ja();
 	tickTime = +new Date;
 	ca();
@@ -354,7 +354,7 @@ else {
 		clientY = 0,
 		mouseMapX = -1,
 		mouseMapY = -1,
-		ka = 0,
+		frameCount = 0,
 		tickTime = 0,
 		nick = null,
 		mapMinX = 0,
