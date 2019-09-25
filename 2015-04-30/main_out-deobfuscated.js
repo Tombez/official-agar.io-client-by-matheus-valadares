@@ -38,7 +38,7 @@ function ca() {
 }
 
 function M() {
-	F = K + s - q / 2;
+	F = K + s - width / 2;
 	G = L + t - r / 2
 }
 
@@ -197,9 +197,9 @@ function W() {
 }
 
 function V() {
-	q = window.innerWidth;
+	width = window.innerWidth;
 	r = window.innerHeight;
-	canvas.width = q;
+	canvas.width = width;
 	canvas.height = r;
 	O()
 }
@@ -207,7 +207,7 @@ function V() {
 function ja() {
 	for (var a = 0, c = 0; c < h.length; c++) a +=
 		h[c].size;
-	a = Math.pow(Math.min(64 / a, 1), .25) * Math.max(r / 965, q / 1920);
+	a = Math.pow(Math.min(64 / a, 1), .25) * Math.max(r / 965, width / 1920);
 	p = (9 * p + a) / 10
 }
 
@@ -223,15 +223,15 @@ function O() {
 		t = (t + b) / 2
 	}
 	M();
-	d.clearRect(0, 0, q, r);
+	d.clearRect(0, 0, width, r);
 	d.fillStyle = "#F2FBFF";
-	d.fillRect(0, 0, q, r);
+	d.fillRect(0, 0, width, r);
 	d.save();
 	d.fillStyle = "#000000";
 	d.strokeStyle = "#000000";
 	d.globalAlpha = .2;
 	d.scale(p, p);
-	c = q / p;
+	c = width / p;
 	b = r / p;
 	for (f = -.5 + (-s + c / 2) % 50; f < c; f += 50) d.beginPath(), d.moveTo(f, 0), d.lineTo(f, b), d.stroke();
 	for (f = -.5 + (-t + b / 2) % 50; f < b; f += 50) d.beginPath(), d.moveTo(0, f), d.lineTo(c, f), d.stroke();
@@ -240,13 +240,13 @@ function O() {
 		return a.size == b.size ? a.id - b.id : a.size - b.size
 	});
 	d.save();
-	d.translate(q / 2, r / 2);
+	d.translate(width / 2, r / 2);
 	d.scale(p, p);
 	d.translate(-s, -t);
 	for (f = 0; f < A.length; f++) A[f].draw();
 	for (f = 0; f < l.length; f++) l[f].draw();
 	d.restore();
-	y && 0 != w.length && d.drawImage(y, q - y.width - 10, 10);
+	y && 0 != w.length && d.drawImage(y, width - y.width - 10, 10);
 	a = +new Date - a;
 	a > 1E3 / 60 ? v -= .01 : a < 1E3 / 65 && (v += .01);
 	.4 > v && (v = .4);
@@ -340,7 +340,7 @@ function Cell(a, c, b, f, d, e) {
 }
 if ("agar.io" != window.location.hostname && "localhost" != window.location.hostname) window.location = "http://agar.io/";
 else {
-	var canvas, d, q, r, P = null,
+	var canvas, d, width, r, P = null,
 		g = null,
 		s = 0,
 		t = 0,
@@ -508,7 +508,7 @@ else {
 			return a
 		},
 		draw: function() {
-			if (!(this.x + this.size + 20 < s - q / 2 / p || this.y + this.size + 20 < t - r / 2 / p || this.x - this.size - 20 > s + q / 2 / p || this.y - this.size - 20 > t + r / 2 / p)) {
+			if (!(this.x + this.size + 20 < s - width / 2 / p || this.y + this.size + 20 < t - r / 2 / p || this.x - this.size - 20 > s + width / 2 / p || this.y - this.size - 20 > t + r / 2 / p)) {
 				d.save();
 				this.drawTime = B;
 				var a = this.updatePos();
