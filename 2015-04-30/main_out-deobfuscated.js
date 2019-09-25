@@ -119,7 +119,7 @@ function fa(a) {
 			ia();
 			break;
 		case 64:
-			Q = f.getFloat64(1, true), R = f.getFloat64(9, true), S = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == myCells.length && (cameraX = (S + Q) / 2, cameraY = (T + R) / 2)
+			mapMinX = f.getFloat64(1, true), R = f.getFloat64(9, true), S = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == myCells.length && (cameraX = (S + mapMinX) / 2, cameraY = (T + R) / 2)
 	}
 }
 
@@ -357,7 +357,7 @@ else {
 		ka = 0,
 		tickTime = 0,
 		nick = null,
-		Q = 0,
+		mapMinX = 0,
 		R = 0,
 		S = 1E4,
 		T = 1E4,
@@ -478,7 +478,7 @@ else {
 				}, function(a) {
 					a.c != m && 25 > (n - a.x) * (n - a.x) + (p - a.y) * (p - a.y) && (l = true)
 				});
-				!l && (a[e].x < Q || a[e].y < R || a[e].x > S || a[e].y > T) && (l = true);
+				!l && (a[e].x < mapMinX || a[e].y < R || a[e].x > S || a[e].y > T) && (l = true);
 				l && (0 < c[e] && (c[e] = 0), c[e] -= 1);
 				b += c[e];
 				0 > b && (b = 0);
