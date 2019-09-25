@@ -1,5 +1,5 @@
 function loadHandler() {
-	x = J = document.getElementById("canvas");
+	x = canvas = document.getElementById("canvas");
 	d = x.getContext("2d");
 	x.onmousedown = function(a) {
 		K = a.clientX;
@@ -199,8 +199,8 @@ function W() {
 function V() {
 	q = window.innerWidth;
 	r = window.innerHeight;
-	J.width = x.width = q;
-	J.height = x.height = r;
+	canvas.width = x.width = q;
+	canvas.height = x.height = r;
 	O()
 }
 
@@ -340,7 +340,7 @@ function Cell(a, c, b, f, d, e) {
 }
 if ("agar.io" != window.location.hostname && "localhost" != window.location.hostname) window.location = "http://agar.io/";
 else {
-	var J, d, x, q, r, P = null,
+	var canvas, d, x, q, r, P = null,
 		g = null,
 		s = 0,
 		t = 0,
