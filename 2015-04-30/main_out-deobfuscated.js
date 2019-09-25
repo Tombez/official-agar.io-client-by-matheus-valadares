@@ -2,13 +2,13 @@ function loadHandler() {
 	canvas = document.getElementById("canvas");
 	d = canvas.getContext("2d");
 	canvas.onmousedown = function(a) {
-		K = a.clientX;
+		clientX = a.clientX;
 		L = a.clientY;
 		M();
 		U()
 	};
 	canvas.onmousemove = function(a) {
-		K = a.clientX;
+		clientX = a.clientX;
 		L = a.clientY;
 		M()
 	};
@@ -38,7 +38,7 @@ function ca() {
 }
 
 function M() {
-	F = K + s - width / 2;
+	F = clientX + s - width / 2;
 	G = L + t - height / 2
 }
 
@@ -350,7 +350,7 @@ else {
 		cells = [],
 		deadCells = [],
 		leaderboardNames = [],
-		K = 0,
+		clientX = 0,
 		L = 0,
 		F = -1,
 		G = -1,
