@@ -44,7 +44,7 @@
 	}
 
 	function N() {
-		E.ajax("http://m.agar.io/", {
+		jQuery.ajax("http://m.agar.io/", {
 			error: function() {
 				setTimeout(N, 1E3)
 			},
@@ -81,7 +81,7 @@
 	}
 
 	function ea(a) {
-		E("#connecting").hide();
+		jQuery("#connecting").hide();
 		console.log("socket open");
 		a = new ArrayBuffer(5);
 		var c = new DataView(a);
@@ -131,7 +131,7 @@
 			var e = u[a.getUint32(b, !0)],
 				k = u[a.getUint32(b + 4, !0)],
 				b = b + 8;
-			e && k && (-1 != h.indexOf(k) && 1 == h.length && E("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = B)
+			e && k && (-1 != h.indexOf(k) && 1 == h.length && jQuery("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = B)
 		}
 		for (;;) {
 			f = a.getUint32(b, !0);
@@ -366,7 +366,7 @@
 		window.setNick = function(a) {
 			D = a;
 			Y();
-			E("#overlays").hide()
+			jQuery("#overlays").hide()
 		};
 		window.connect = X;
 		var $ = -1,
