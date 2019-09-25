@@ -14,14 +14,14 @@
 			M()
 		};
 		x.onmouseup = function(a) {};
-		n.onkeydown = function(a) {
+		window.onkeydown = function(a) {
 			32 == a.keyCode && null != g && g.readyState == g.OPEN &&
 			(a = new ArrayBuffer(1), (new DataView(a)).setUint8(0, 17), g.send(a))
 		};
 		N();
-		n.onresize = V;
+		window.onresize = V;
 		V();
-		n.requestAnimationFrame ? n.requestAnimationFrame(W) : setInterval(O, 1E3 / 60);
+		window.requestAnimationFrame ? window.requestAnimationFrame(W) : setInterval(O, 1E3 / 60);
 		setInterval(U, 100)
 	}
 
@@ -194,12 +194,12 @@
 
 	function W() {
 		O();
-		n.requestAnimationFrame(W)
+		window.requestAnimationFrame(W)
 	}
 
 	function V() {
-		q = n.innerWidth;
-		r = n.innerHeight;
+		q = window.innerWidth;
+		r = window.innerHeight;
 		J.width = x.width = q;
 		J.height = x.height = r;
 		O()
@@ -339,7 +339,7 @@
 		this.createPoints();
 		this.setName(e)
 	}
-	if ("agar.io" != n.location.hostname && "localhost" != n.location.hostname) n.location = "http://agar.io/";
+	if ("agar.io" != window.location.hostname && "localhost" != window.location.hostname) window.location = "http://agar.io/";
 	else {
 		var J, d, x, q, r, P = null,
 			g = null,
@@ -363,12 +363,12 @@
 			S = 1E4,
 			T = 1E4,
 			p = 1;
-		n.setNick = function(a) {
+		window.setNick = function(a) {
 			D = a;
 			Y();
 			E("#overlays").hide()
 		};
-		n.connect = X;
+		window.connect = X;
 		var $ = -1,
 			aa = -1,
 			y = null,
@@ -537,6 +537,6 @@
 				}
 			}
 		};
-		n.onload = ba
+		window.onload = ba
 	}
 })(window, jQuery);
