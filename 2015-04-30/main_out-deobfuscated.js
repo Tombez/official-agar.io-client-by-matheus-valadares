@@ -38,7 +38,7 @@ function ca() {
 }
 
 function M() {
-	mouseMapX = clientX + s - width / 2;
+	mouseMapX = clientX + cameraX - width / 2;
 	mouseMapY = clientY + t - height / 2
 }
 
@@ -119,7 +119,7 @@ function fa(a) {
 			ia();
 			break;
 		case 64:
-			Q = f.getFloat64(1, true), R = f.getFloat64(9, true), S = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == myCells.length && (s = (S + Q) / 2, t = (T + R) / 2)
+			Q = f.getFloat64(1, true), R = f.getFloat64(9, true), S = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == myCells.length && (cameraX = (S + Q) / 2, t = (T + R) / 2)
 	}
 }
 
@@ -157,7 +157,7 @@ function ha(a) {
 		m.ny = e;
 		m.nSize = k;
 		m.updateCode = c;
-		m.updateTime = B; - 1 != myCellIds.indexOf(f) && -1 == myCells.indexOf(m) && (document.getElementById("overlays").style.display = "none", myCells.push(m), 1 == myCells.length && (s = m.x, t = m.y))
+		m.updateTime = B; - 1 != myCellIds.indexOf(f) && -1 == myCells.indexOf(m) && (document.getElementById("overlays").style.display = "none", myCells.push(m), 1 == myCells.length && (cameraX = m.x, t = m.y))
 	}
 	a.getUint16(b, true);
 	b += 2;
@@ -219,7 +219,7 @@ function O() {
 	ca();
 	if (0 < myCells.length) {
 		for (var c = 0, b = 0, f = 0; f < myCells.length; f++) myCells[f].updatePos(), c += myCells[f].x / myCells.length, b += myCells[f].y / myCells.length;
-		s = (s + c) / 2;
+		cameraX = (cameraX + c) / 2;
 		t = (t + b) / 2
 	}
 	M();
@@ -233,7 +233,7 @@ function O() {
 	d.scale(p, p);
 	c = width / p;
 	b = height / p;
-	for (f = -.5 + (-s + c / 2) % 50; f < c; f += 50) d.beginPath(), d.moveTo(f, 0), d.lineTo(f, b), d.stroke();
+	for (f = -.5 + (-cameraX + c / 2) % 50; f < c; f += 50) d.beginPath(), d.moveTo(f, 0), d.lineTo(f, b), d.stroke();
 	for (f = -.5 + (-t + b / 2) % 50; f < b; f += 50) d.beginPath(), d.moveTo(0, f), d.lineTo(c, f), d.stroke();
 	d.restore();
 	cells.sort(function(a, b) {
@@ -242,7 +242,7 @@ function O() {
 	d.save();
 	d.translate(width / 2, height / 2);
 	d.scale(p, p);
-	d.translate(-s, -t);
+	d.translate(-cameraX, -t);
 	for (f = 0; f < deadCells.length; f++) deadCells[f].draw();
 	for (f = 0; f < cells.length; f++) cells[f].draw();
 	d.restore();
@@ -342,7 +342,7 @@ if ("agar.io" != window.location.hostname && "localhost" != window.location.host
 else {
 	var canvas, d, width, height, quadtree = null,
 		socket = null,
-		s = 0,
+		cameraX = 0,
 		t = 0,
 		myCellIds = [],
 		myCells = [],
@@ -508,7 +508,7 @@ else {
 			return a
 		},
 		draw: function() {
-			if (!(this.x + this.size + 20 < s - width / 2 / p || this.y + this.size + 20 < t - height / 2 / p || this.x - this.size - 20 > s + width / 2 / p || this.y - this.size - 20 > t + height / 2 / p)) {
+			if (!(this.x + this.size + 20 < cameraX - width / 2 / p || this.y + this.size + 20 < t - height / 2 / p || this.x - this.size - 20 > cameraX + width / 2 / p || this.y - this.size - 20 > t + height / 2 / p)) {
 				d.save();
 				this.drawTime = B;
 				var a = this.updatePos();
