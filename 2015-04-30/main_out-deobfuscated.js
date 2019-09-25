@@ -63,7 +63,7 @@ function da() {
 
 function X(a) {
 	myCellIds = [];
-	h = [];
+	myCells = [];
 	cellsById = {};
 	cells = [];
 	deadCells = [];
@@ -119,7 +119,7 @@ function fa(a) {
 			ia();
 			break;
 		case 64:
-			Q = f.getFloat64(1, true), R = f.getFloat64(9, true), S = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == h.length && (s = (S + Q) / 2, t = (T + R) / 2)
+			Q = f.getFloat64(1, true), R = f.getFloat64(9, true), S = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == myCells.length && (s = (S + Q) / 2, t = (T + R) / 2)
 	}
 }
 
@@ -130,7 +130,7 @@ function ha(a) {
 		var e = cellsById[a.getUint32(b, true)],
 			k = cellsById[a.getUint32(b + 4, true)],
 			b = b + 8;
-		e && k && (-1 != h.indexOf(k) && 1 == h.length && jQuery("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = B)
+		e && k && (-1 != myCells.indexOf(k) && 1 == myCells.length && jQuery("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = B)
 	}
 	for (;;) {
 		f = a.getUint32(b, true);
@@ -157,7 +157,7 @@ function ha(a) {
 		m.ny = e;
 		m.nSize = k;
 		m.updateCode = c;
-		m.updateTime = B; - 1 != myCellIds.indexOf(f) && -1 == h.indexOf(m) && (document.getElementById("overlays").style.display = "none", h.push(m), 1 == h.length && (s = m.x, t = m.y))
+		m.updateTime = B; - 1 != myCellIds.indexOf(f) && -1 == myCells.indexOf(m) && (document.getElementById("overlays").style.display = "none", myCells.push(m), 1 == myCells.length && (s = m.x, t = m.y))
 	}
 	a.getUint16(b, true);
 	b += 2;
@@ -205,8 +205,8 @@ function V() {
 }
 
 function ja() {
-	for (var a = 0, c = 0; c < h.length; c++) a +=
-		h[c].size;
+	for (var a = 0, c = 0; c < myCells.length; c++) a +=
+		myCells[c].size;
 	a = Math.pow(Math.min(64 / a, 1), .25) * Math.max(height / 965, width / 1920);
 	p = (9 * p + a) / 10
 }
@@ -217,8 +217,8 @@ function O() {
 	ja();
 	B = +new Date;
 	ca();
-	if (0 < h.length) {
-		for (var c = 0, b = 0, f = 0; f < h.length; f++) h[f].updatePos(), c += h[f].x / h.length, b += h[f].y / h.length;
+	if (0 < myCells.length) {
+		for (var c = 0, b = 0, f = 0; f < myCells.length; f++) myCells[f].updatePos(), c += myCells[f].x / myCells.length, b += myCells[f].y / myCells.length;
 		s = (s + c) / 2;
 		t = (t + b) / 2
 	}
@@ -345,7 +345,7 @@ else {
 		s = 0,
 		t = 0,
 		myCellIds = [],
-		h = [],
+		myCells = [],
 		cellsById = {},
 		cells = [],
 		deadCells = [],
@@ -400,7 +400,7 @@ else {
 					cells.splice(a, 1);
 					break
 				} delete cellsById[this.id];
-			a = h.indexOf(this); - 1 != a && h.splice(a, 1);
+			a = myCells.indexOf(this); - 1 != a && myCells.splice(a, 1);
 			a = myCellIds.indexOf(this.id); - 1 != a && myCellIds.splice(a, 1);
 			this.destroyed = true;
 			deadCells.push(this)
