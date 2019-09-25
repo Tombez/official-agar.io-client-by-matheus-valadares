@@ -64,7 +64,7 @@ function da() {
 function X(a) {
 	C = [];
 	h = [];
-	u = {};
+	cellsById = {};
 	l = [];
 	A = [];
 	w = [];
@@ -127,8 +127,8 @@ function ha(a) {
 	B = +new Date;
 	for (var c = Math.random(), b = 1, f = a.getUint16(b,
 			true), b = b + 2, d = 0; d < f; ++d) {
-		var e = u[a.getUint32(b, true)],
-			k = u[a.getUint32(b + 4, true)],
+		var e = cellsById[a.getUint32(b, true)],
+			k = cellsById[a.getUint32(b + 4, true)],
 			b = b + 8;
 		e && k && (-1 != h.indexOf(k) && 1 == h.length && jQuery("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = B)
 	}
@@ -151,7 +151,7 @@ function ha(a) {
 			H += String.fromCharCode(m)
 		}
 		m = null;
-		u.hasOwnProperty(f) ? (m = u[f],
+		cellsById.hasOwnProperty(f) ? (m = cellsById[f],
 			m.updatePos(), m.ox = m.x, m.oy = m.y, m.oSize = m.size) : m = new Cell(f, d, e, k, g, H);
 		m.nx = d;
 		m.ny = e;
@@ -163,7 +163,7 @@ function ha(a) {
 	b += 2;
 	e = a.getUint32(b, true);
 	b += 4;
-	for (d = 0; d < e; d++) f = a.getUint32(b, true), b += 4, u[f] && (u[f].updateCode = c);
+	for (d = 0; d < e; d++) f = a.getUint32(b, true), b += 4, cellsById[f] && (cellsById[f].updateCode = c);
 	for (d = 0; d < l.length; d++) l[d].updateCode != c && l[d--].destroy()
 }
 
@@ -277,7 +277,7 @@ function ia() {
 
 function Cell(a, c, b, f, d, e) {
 	l.push(this);
-	u[a] = this;
+	cellsById[a] = this;
 	this.id = a;
 	this.ox = this.x = c;
 	this.oy = this.y = b;
@@ -346,7 +346,7 @@ else {
 		t = 0,
 		C = [],
 		h = [],
-		u = {},
+		cellsById = {},
 		l = [],
 		A = [],
 		w = [],
@@ -399,7 +399,7 @@ else {
 				if (l[a] == this) {
 					l.splice(a, 1);
 					break
-				} delete u[this.id];
+				} delete cellsById[this.id];
 			a = h.indexOf(this); - 1 != a && h.splice(a, 1);
 			a = C.indexOf(this.id); - 1 != a && C.splice(a, 1);
 			this.destroyed = true;
