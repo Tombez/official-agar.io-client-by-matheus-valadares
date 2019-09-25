@@ -85,7 +85,7 @@ function ea(a) {
 	a = new ArrayBuffer(5);
 	var c = new DataView(a);
 	c.setUint8(0, 255);
-	c.setUint32(1, 1, !0);
+	c.setUint32(1, 1, true);
 	g.send(a);
 	Y()
 }
@@ -98,7 +98,7 @@ function ga(a) {
 function fa(a) {
 	function c() {
 		for (var a = "";;) {
-			var c = f.getUint16(b, !0);
+			var c = f.getUint16(b, true);
 			b += 2;
 			if (0 == c) break;
 			a += String.fromCharCode(c)
@@ -112,40 +112,40 @@ function fa(a) {
 			ha(f);
 			break;
 		case 32:
-			C.push(f.getUint32(1, !0));
+			C.push(f.getUint32(1, true));
 			break;
 		case 48:
 			for (w = []; b < f.byteLength;) w.push(c());
 			ia();
 			break;
 		case 64:
-			Q = f.getFloat64(1, !0), R = f.getFloat64(9, !0), S = f.getFloat64(17, !0), T = f.getFloat64(25, !0), 0 == h.length && (s = (S + Q) / 2, t = (T + R) / 2)
+			Q = f.getFloat64(1, true), R = f.getFloat64(9, true), S = f.getFloat64(17, true), T = f.getFloat64(25, true), 0 == h.length && (s = (S + Q) / 2, t = (T + R) / 2)
 	}
 }
 
 function ha(a) {
 	B = +new Date;
 	for (var c = Math.random(), b = 1, f = a.getUint16(b,
-			!0), b = b + 2, d = 0; d < f; ++d) {
-		var e = u[a.getUint32(b, !0)],
-			k = u[a.getUint32(b + 4, !0)],
+			true), b = b + 2, d = 0; d < f; ++d) {
+		var e = u[a.getUint32(b, true)],
+			k = u[a.getUint32(b + 4, true)],
 			b = b + 8;
 		e && k && (-1 != h.indexOf(k) && 1 == h.length && jQuery("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = B)
 	}
 	for (;;) {
-		f = a.getUint32(b, !0);
+		f = a.getUint32(b, true);
 		b += 4;
 		if (0 == f) break;
-		var d = a.getFloat64(b, !0),
+		var d = a.getFloat64(b, true),
 			b = b + 8,
-			e = a.getFloat64(b, !0),
+			e = a.getFloat64(b, true),
 			b = b + 8,
-			k = a.getFloat64(b, !0),
+			k = a.getFloat64(b, true),
 			b = b + 8,
 			g = a.getUint8(b++),
 			H;
 		for (H = "";;) {
-			var m = a.getUint16(b, !0),
+			var m = a.getUint16(b, true),
 				b = b + 2;
 			if (0 == m) break;
 			H += String.fromCharCode(m)
@@ -159,11 +159,11 @@ function ha(a) {
 		m.updateCode = c;
 		m.updateTime = B; - 1 != C.indexOf(f) && -1 == h.indexOf(m) && (document.getElementById("overlays").style.display = "none", h.push(m), 1 == h.length && (s = m.x, t = m.y))
 	}
-	a.getUint16(b, !0);
+	a.getUint16(b, true);
 	b += 2;
-	e = a.getUint32(b, !0);
+	e = a.getUint32(b, true);
 	b += 4;
-	for (d = 0; d < e; d++) f = a.getUint32(b, !0), b += 4, u[f] && (u[f].updateCode = c);
+	for (d = 0; d < e; d++) f = a.getUint32(b, true), b += 4, u[f] && (u[f].updateCode = c);
 	for (d = 0; d < l.length; d++) l[d].updateCode != c && l[d--].destroy()
 }
 
@@ -174,9 +174,9 @@ function U() {
 		var a = new ArrayBuffer(21),
 			c = new DataView(a);
 		c.setUint8(0, 16);
-		c.setFloat64(1, F, !0);
-		c.setFloat64(9, G, !0);
-		c.setUint32(17, 0, !0);
+		c.setFloat64(1, F, true);
+		c.setFloat64(9, G, true);
+		c.setUint32(17, 0, true);
 		g.send(a)
 	}
 }
@@ -186,7 +186,7 @@ function Y() {
 		var a = new ArrayBuffer(1 + 2 * D.length),
 			c = new DataView(a);
 		c.setUint8(0, 0);
-		for (var b = 0; b < D.length; ++b) c.setUint16(1 + 2 * b, D.charCodeAt(b), !0);
+		for (var b = 0; b < D.length; ++b) c.setUint16(1 + 2 * b, D.charCodeAt(b), true);
 		g.send(a)
 	}
 }
@@ -283,7 +283,7 @@ function Cell(a, c, b, f, d, e) {
 	this.oy = this.y = b;
 	this.oSize = this.size = f;
 	if (0 ==
-		d) this.isVirus = !0, this.color = "#33FF33";
+		d) this.isVirus = true, this.color = "#33FF33";
 	else {
 		a = 63487 | d << 16;
 		b = (a >> 16 & 255) / 255 * 360;
@@ -402,7 +402,7 @@ else {
 				} delete u[this.id];
 			a = h.indexOf(this); - 1 != a && h.splice(a, 1);
 			a = C.indexOf(this.id); - 1 != a && C.splice(a, 1);
-			this.destroyed = !0;
+			this.destroyed = true;
 			A.push(this)
 		},
 		getNameSize: function() {
@@ -476,9 +476,9 @@ else {
 					w: 10,
 					h: 10
 				}, function(a) {
-					a.c != m && 25 > (n - a.x) * (n - a.x) + (p - a.y) * (p - a.y) && (l = !0)
+					a.c != m && 25 > (n - a.x) * (n - a.x) + (p - a.y) * (p - a.y) && (l = true)
 				});
-				!l && (a[e].x < Q || a[e].y < R || a[e].x > S || a[e].y > T) && (l = !0);
+				!l && (a[e].x < Q || a[e].y < R || a[e].x > S || a[e].y > T) && (l = true);
 				l && (0 < c[e] && (c[e] = 0), c[e] -= 1);
 				b += c[e];
 				0 > b && (b = 0);
