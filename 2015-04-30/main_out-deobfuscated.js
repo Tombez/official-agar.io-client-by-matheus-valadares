@@ -66,7 +66,7 @@ function X(a) {
 	h = [];
 	cellsById = {};
 	cells = [];
-	A = [];
+	deadCells = [];
 	w = [];
 	console.log("Connecting to " + a);
 	g = new WebSocket(a);
@@ -243,7 +243,7 @@ function O() {
 	d.translate(width / 2, height / 2);
 	d.scale(p, p);
 	d.translate(-s, -t);
-	for (f = 0; f < A.length; f++) A[f].draw();
+	for (f = 0; f < deadCells.length; f++) deadCells[f].draw();
 	for (f = 0; f < cells.length; f++) cells[f].draw();
 	d.restore();
 	y && 0 != w.length && d.drawImage(y, width - y.width - 10, 10);
@@ -348,7 +348,7 @@ else {
 		h = [],
 		cellsById = {},
 		cells = [],
-		A = [],
+		deadCells = [],
 		w = [],
 		K = 0,
 		L = 0,
@@ -403,7 +403,7 @@ else {
 			a = h.indexOf(this); - 1 != a && h.splice(a, 1);
 			a = C.indexOf(this.id); - 1 != a && C.splice(a, 1);
 			this.destroyed = true;
-			A.push(this)
+			deadCells.push(this)
 		},
 		getNameSize: function() {
 			return Math.max(~~(.3 * this.size), 24)
@@ -499,7 +499,7 @@ else {
 			var c = this.getNameSize();
 			if (this.destroyed &&
 				1 <= a) {
-				var b = A.indexOf(this); - 1 != b && A.splice(b, 1)
+				var b = deadCells.indexOf(this); - 1 != b && deadCells.splice(b, 1)
 			}
 			this.x = a * (this.nx - this.ox) + this.ox;
 			this.y = a * (this.ny - this.oy) + this.oy;
