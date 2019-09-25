@@ -1,18 +1,18 @@
 function loadHandler() {
-	x = canvas = document.getElementById("canvas");
-	d = x.getContext("2d");
-	x.onmousedown = function(a) {
+	canvas = document.getElementById("canvas");
+	d = canvas.getContext("2d");
+	canvas.onmousedown = function(a) {
 		K = a.clientX;
 		L = a.clientY;
 		M();
 		U()
 	};
-	x.onmousemove = function(a) {
+	canvas.onmousemove = function(a) {
 		K = a.clientX;
 		L = a.clientY;
 		M()
 	};
-	x.onmouseup = function(a) {};
+	canvas.onmouseup = function(a) {};
 	window.onkeydown = function(a) {
 		32 == a.keyCode && null != g && g.readyState == g.OPEN &&
 		(a = new ArrayBuffer(1), (new DataView(a)).setUint8(0, 17), g.send(a))
@@ -199,8 +199,8 @@ function W() {
 function V() {
 	q = window.innerWidth;
 	r = window.innerHeight;
-	canvas.width = x.width = q;
-	canvas.height = x.height = r;
+	canvas.width = q;
+	canvas.height = r;
 	O()
 }
 
@@ -340,7 +340,7 @@ function Cell(a, c, b, f, d, e) {
 }
 if ("agar.io" != window.location.hostname && "localhost" != window.location.hostname) window.location = "http://agar.io/";
 else {
-	var canvas, d, x, q, r, P = null,
+	var canvas, d, q, r, P = null,
 		g = null,
 		s = 0,
 		t = 0,
