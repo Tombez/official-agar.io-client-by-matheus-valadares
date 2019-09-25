@@ -67,7 +67,7 @@ function X(a) {
 	cellsById = {};
 	cells = [];
 	deadCells = [];
-	w = [];
+	leaderboardNames = [];
 	console.log("Connecting to " + a);
 	g = new WebSocket(a);
 	g.binaryType = "arraybuffer";
@@ -115,7 +115,7 @@ function fa(a) {
 			C.push(f.getUint32(1, true));
 			break;
 		case 48:
-			for (w = []; b < f.byteLength;) w.push(c());
+			for (leaderboardNames = []; b < f.byteLength;) leaderboardNames.push(c());
 			ia();
 			break;
 		case 64:
@@ -246,7 +246,7 @@ function O() {
 	for (f = 0; f < deadCells.length; f++) deadCells[f].draw();
 	for (f = 0; f < cells.length; f++) cells[f].draw();
 	d.restore();
-	y && 0 != w.length && d.drawImage(y, width - y.width - 10, 10);
+	y && 0 != leaderboardNames.length && d.drawImage(y, width - y.width - 10, 10);
 	a = +new Date - a;
 	a > 1E3 / 60 ? v -= .01 : a < 1E3 / 65 && (v += .01);
 	.4 > v && (v = .4);
@@ -254,11 +254,11 @@ function O() {
 }
 
 function ia() {
-	if (0 != w.length) {
+	if (0 != leaderboardNames.length) {
 		y = document.createElement("canvas");
 		var a =
 			y.getContext("2d"),
-			c = 60 + 24 * w.length;
+			c = 60 + 24 * leaderboardNames.length;
 		y.width = 200;
 		y.height = c;
 		a.globalAlpha = .4;
@@ -271,7 +271,7 @@ function ia() {
 		a.font = "30px Ubuntu";
 		a.fillText(c, 100 - a.measureText(c).width / 2, 40);
 		a.font = "20px Ubuntu";
-		for (var b = 0; b < w.length; ++b) c = b + 1 + ". " + (w[b] || "An unnamed cell"), a.fillText(c, 100 - a.measureText(c).width / 2, 70 + 24 * b)
+		for (var b = 0; b < leaderboardNames.length; ++b) c = b + 1 + ". " + (leaderboardNames[b] || "An unnamed cell"), a.fillText(c, 100 - a.measureText(c).width / 2, 70 + 24 * b)
 	}
 }
 
@@ -349,7 +349,7 @@ else {
 		cellsById = {},
 		cells = [],
 		deadCells = [],
-		w = [],
+		leaderboardNames = [],
 		K = 0,
 		L = 0,
 		F = -1,
