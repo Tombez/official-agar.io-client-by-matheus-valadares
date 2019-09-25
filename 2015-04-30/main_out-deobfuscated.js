@@ -26,15 +26,15 @@ function loadHandler() {
 
 function ca() {
 	for (var a =
-			Number.POSITIVE_INFINITY, c = Number.POSITIVE_INFINITY, b = Number.NEGATIVE_INFINITY, f = Number.NEGATIVE_INFINITY, z = 0, e = 0; e < l.length; e++) z = Math.max(l[e].size, z), a = Math.min(l[e].x, a), c = Math.min(l[e].y, c), b = Math.max(l[e].x, b), f = Math.max(l[e].y, f);
+			Number.POSITIVE_INFINITY, c = Number.POSITIVE_INFINITY, b = Number.NEGATIVE_INFINITY, f = Number.NEGATIVE_INFINITY, z = 0, e = 0; e < cells.length; e++) z = Math.max(cells[e].size, z), a = Math.min(cells[e].x, a), c = Math.min(cells[e].y, c), b = Math.max(cells[e].x, b), f = Math.max(cells[e].y, f);
 	quadtree = QUAD.init({
 		minX: a - (z + 100),
 		minY: c - (z + 100),
 		maxX: b + (z + 100),
 		maxY: f + (z + 100)
 	});
-	for (e = 0; e < l.length; e++)
-		for (a = l[e], c = 0; c < a.points.length; ++c) quadtree.insert(a.points[c])
+	for (e = 0; e < cells.length; e++)
+		for (a = cells[e], c = 0; c < a.points.length; ++c) quadtree.insert(a.points[c])
 }
 
 function M() {
@@ -65,7 +65,7 @@ function X(a) {
 	C = [];
 	h = [];
 	cellsById = {};
-	l = [];
+	cells = [];
 	A = [];
 	w = [];
 	console.log("Connecting to " + a);
@@ -164,7 +164,7 @@ function ha(a) {
 	e = a.getUint32(b, true);
 	b += 4;
 	for (d = 0; d < e; d++) f = a.getUint32(b, true), b += 4, cellsById[f] && (cellsById[f].updateCode = c);
-	for (d = 0; d < l.length; d++) l[d].updateCode != c && l[d--].destroy()
+	for (d = 0; d < cells.length; d++) cells[d].updateCode != c && cells[d--].destroy()
 }
 
 function U() {
@@ -236,7 +236,7 @@ function O() {
 	for (f = -.5 + (-s + c / 2) % 50; f < c; f += 50) d.beginPath(), d.moveTo(f, 0), d.lineTo(f, b), d.stroke();
 	for (f = -.5 + (-t + b / 2) % 50; f < b; f += 50) d.beginPath(), d.moveTo(0, f), d.lineTo(c, f), d.stroke();
 	d.restore();
-	l.sort(function(a, b) {
+	cells.sort(function(a, b) {
 		return a.size == b.size ? a.id - b.id : a.size - b.size
 	});
 	d.save();
@@ -244,7 +244,7 @@ function O() {
 	d.scale(p, p);
 	d.translate(-s, -t);
 	for (f = 0; f < A.length; f++) A[f].draw();
-	for (f = 0; f < l.length; f++) l[f].draw();
+	for (f = 0; f < cells.length; f++) cells[f].draw();
 	d.restore();
 	y && 0 != w.length && d.drawImage(y, width - y.width - 10, 10);
 	a = +new Date - a;
@@ -276,7 +276,7 @@ function ia() {
 }
 
 function Cell(a, c, b, f, d, e) {
-	l.push(this);
+	cells.push(this);
 	cellsById[a] = this;
 	this.id = a;
 	this.ox = this.x = c;
@@ -347,7 +347,7 @@ else {
 		C = [],
 		h = [],
 		cellsById = {},
-		l = [],
+		cells = [],
 		A = [],
 		w = [],
 		K = 0,
@@ -395,9 +395,9 @@ else {
 		isVirus: false,
 		destroy: function() {
 			var a;
-			for (a = 0; a < l.length; a++)
-				if (l[a] == this) {
-					l.splice(a, 1);
+			for (a = 0; a < cells.length; a++)
+				if (cells[a] == this) {
+					cells.splice(a, 1);
 					break
 				} delete cellsById[this.id];
 			a = h.indexOf(this); - 1 != a && h.splice(a, 1);
