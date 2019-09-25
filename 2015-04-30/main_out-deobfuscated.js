@@ -38,7 +38,7 @@ function ca() {
 }
 
 function M() {
-	F = clientX + s - width / 2;
+	mouseMapX = clientX + s - width / 2;
 	G = clientY + t - height / 2
 }
 
@@ -168,13 +168,13 @@ function ha(a) {
 }
 
 function U() {
-	if (null != g && g.readyState == g.OPEN && ($ != F || aa != G)) {
-		$ = F;
+	if (null != g && g.readyState == g.OPEN && ($ != mouseMapX || aa != G)) {
+		$ = mouseMapX;
 		aa = G;
 		var a = new ArrayBuffer(21),
 			c = new DataView(a);
 		c.setUint8(0, 16);
-		c.setFloat64(1, F, true);
+		c.setFloat64(1, mouseMapX, true);
 		c.setFloat64(9, G, true);
 		c.setUint32(17, 0, true);
 		g.send(a)
@@ -352,7 +352,7 @@ else {
 		leaderboardNames = [],
 		clientX = 0,
 		clientY = 0,
-		F = -1,
+		mouseMapX = -1,
 		G = -1,
 		ka = 0,
 		B = 0,
