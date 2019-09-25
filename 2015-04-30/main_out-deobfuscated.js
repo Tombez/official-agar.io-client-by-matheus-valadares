@@ -152,7 +152,7 @@ function ha(a) {
 		}
 		m = null;
 		u.hasOwnProperty(f) ? (m = u[f],
-			m.updatePos(), m.ox = m.x, m.oy = m.y, m.oSize = m.size) : m = new Z(f, d, e, k, g, H);
+			m.updatePos(), m.ox = m.x, m.oy = m.y, m.oSize = m.size) : m = new Cell(f, d, e, k, g, H);
 		m.nx = d;
 		m.ny = e;
 		m.nSize = k;
@@ -275,7 +275,7 @@ function ia() {
 	}
 }
 
-function Z(a, c, b, f, d, e) {
+function Cell(a, c, b, f, d, e) {
 	l.push(this);
 	u[a] = this;
 	this.id = a;
@@ -373,7 +373,7 @@ else {
 		y = null,
 		v = 1,
 		I = {};
-	Z.prototype = {
+	Cell.prototype = {
 		id: 0,
 		points: null,
 		pointsAcc: null,
