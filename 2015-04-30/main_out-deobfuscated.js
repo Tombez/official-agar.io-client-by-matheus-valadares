@@ -14,8 +14,8 @@ function loadHandler() {
 	};
 	canvas.onmouseup = function(a) {};
 	window.onkeydown = function(a) {
-		32 == a.keyCode && null != g && g.readyState == g.OPEN &&
-		(a = new ArrayBuffer(1), (new DataView(a)).setUint8(0, 17), g.send(a))
+		32 == a.keyCode && null != socket && socket.readyState == socket.OPEN &&
+		(a = new ArrayBuffer(1), (new DataView(a)).setUint8(0, 17), socket.send(a))
 	};
 	N();
 	window.onresize = V;
@@ -69,12 +69,12 @@ function X(a) {
 	deadCells = [];
 	leaderboardNames = [];
 	console.log("Connecting to " + a);
-	g = new WebSocket(a);
-	g.binaryType = "arraybuffer";
-	g.onopen = ea;
-	g.onmessage = fa;
-	g.onclose = ga;
-	g.onerror = function() {
+	socket = new WebSocket(a);
+	socket.binaryType = "arraybuffer";
+	socket.onopen = ea;
+	socket.onmessage = fa;
+	socket.onclose = ga;
+	socket.onerror = function() {
 		console.log("socket error")
 	}
 }
@@ -86,7 +86,7 @@ function ea(a) {
 	var c = new DataView(a);
 	c.setUint8(0, 255);
 	c.setUint32(1, 1, true);
-	g.send(a);
+	socket.send(a);
 	Y()
 }
 
@@ -168,7 +168,7 @@ function ha(a) {
 }
 
 function U() {
-	if (null != g && g.readyState == g.OPEN && (mouseSentX != mouseMapX || mouseSentY != mouseMapY)) {
+	if (null != socket && socket.readyState == socket.OPEN && (mouseSentX != mouseMapX || mouseSentY != mouseMapY)) {
 		mouseSentX = mouseMapX;
 		mouseSentY = mouseMapY;
 		var a = new ArrayBuffer(21),
@@ -177,17 +177,17 @@ function U() {
 		c.setFloat64(1, mouseMapX, true);
 		c.setFloat64(9, mouseMapY, true);
 		c.setUint32(17, 0, true);
-		g.send(a)
+		socket.send(a)
 	}
 }
 
 function Y() {
-	if (null != g && g.readyState == g.OPEN && null != nick) {
+	if (null != socket && socket.readyState == socket.OPEN && null != nick) {
 		var a = new ArrayBuffer(1 + 2 * nick.length),
 			c = new DataView(a);
 		c.setUint8(0, 0);
 		for (var b = 0; b < nick.length; ++b) c.setUint16(1 + 2 * b, nick.charCodeAt(b), true);
-		g.send(a)
+		socket.send(a)
 	}
 }
 
@@ -341,7 +341,7 @@ function Cell(a, c, b, f, d, e) {
 if ("agar.io" != window.location.hostname && "localhost" != window.location.hostname) window.location = "http://agar.io/";
 else {
 	var canvas, d, width, height, quadtree = null,
-		g = null,
+		socket = null,
 		s = 0,
 		t = 0,
 		C = [],
