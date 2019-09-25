@@ -168,9 +168,9 @@ function ha(a) {
 }
 
 function U() {
-	if (null != g && g.readyState == g.OPEN && (mouseSentX != mouseMapX || aa != mouseMapY)) {
+	if (null != g && g.readyState == g.OPEN && (mouseSentX != mouseMapX || mouseSentY != mouseMapY)) {
 		mouseSentX = mouseMapX;
-		aa = mouseMapY;
+		mouseSentY = mouseMapY;
 		var a = new ArrayBuffer(21),
 			c = new DataView(a);
 		c.setUint8(0, 16);
@@ -369,7 +369,7 @@ else {
 	};
 	window.connect = X;
 	var mouseSentX = -1,
-		aa = -1,
+		mouseSentY = -1,
 		y = null,
 		v = 1,
 		I = {};
