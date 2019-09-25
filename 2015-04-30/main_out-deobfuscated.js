@@ -39,7 +39,7 @@ function ca() {
 
 function M() {
 	F = K + s - width / 2;
-	G = L + t - r / 2
+	G = L + t - height / 2
 }
 
 function N() {
@@ -198,16 +198,16 @@ function W() {
 
 function V() {
 	width = window.innerWidth;
-	r = window.innerHeight;
+	height = window.innerHeight;
 	canvas.width = width;
-	canvas.height = r;
+	canvas.height = height;
 	O()
 }
 
 function ja() {
 	for (var a = 0, c = 0; c < h.length; c++) a +=
 		h[c].size;
-	a = Math.pow(Math.min(64 / a, 1), .25) * Math.max(r / 965, width / 1920);
+	a = Math.pow(Math.min(64 / a, 1), .25) * Math.max(height / 965, width / 1920);
 	p = (9 * p + a) / 10
 }
 
@@ -223,16 +223,16 @@ function O() {
 		t = (t + b) / 2
 	}
 	M();
-	d.clearRect(0, 0, width, r);
+	d.clearRect(0, 0, width, height);
 	d.fillStyle = "#F2FBFF";
-	d.fillRect(0, 0, width, r);
+	d.fillRect(0, 0, width, height);
 	d.save();
 	d.fillStyle = "#000000";
 	d.strokeStyle = "#000000";
 	d.globalAlpha = .2;
 	d.scale(p, p);
 	c = width / p;
-	b = r / p;
+	b = height / p;
 	for (f = -.5 + (-s + c / 2) % 50; f < c; f += 50) d.beginPath(), d.moveTo(f, 0), d.lineTo(f, b), d.stroke();
 	for (f = -.5 + (-t + b / 2) % 50; f < b; f += 50) d.beginPath(), d.moveTo(0, f), d.lineTo(c, f), d.stroke();
 	d.restore();
@@ -240,7 +240,7 @@ function O() {
 		return a.size == b.size ? a.id - b.id : a.size - b.size
 	});
 	d.save();
-	d.translate(width / 2, r / 2);
+	d.translate(width / 2, height / 2);
 	d.scale(p, p);
 	d.translate(-s, -t);
 	for (f = 0; f < A.length; f++) A[f].draw();
@@ -340,7 +340,7 @@ function Cell(a, c, b, f, d, e) {
 }
 if ("agar.io" != window.location.hostname && "localhost" != window.location.hostname) window.location = "http://agar.io/";
 else {
-	var canvas, d, width, r, P = null,
+	var canvas, d, width, height, P = null,
 		g = null,
 		s = 0,
 		t = 0,
@@ -508,7 +508,7 @@ else {
 			return a
 		},
 		draw: function() {
-			if (!(this.x + this.size + 20 < s - width / 2 / p || this.y + this.size + 20 < t - r / 2 / p || this.x - this.size - 20 > s + width / 2 / p || this.y - this.size - 20 > t + r / 2 / p)) {
+			if (!(this.x + this.size + 20 < s - width / 2 / p || this.y + this.size + 20 < t - height / 2 / p || this.x - this.size - 20 > s + width / 2 / p || this.y - this.size - 20 > t + height / 2 / p)) {
 				d.save();
 				this.drawTime = B;
 				var a = this.updatePos();
