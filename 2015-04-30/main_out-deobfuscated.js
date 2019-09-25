@@ -39,7 +39,7 @@ function ca() {
 
 function M() {
 	mouseMapX = clientX + s - width / 2;
-	G = clientY + t - height / 2
+	mouseMapY = clientY + t - height / 2
 }
 
 function N() {
@@ -168,14 +168,14 @@ function ha(a) {
 }
 
 function U() {
-	if (null != g && g.readyState == g.OPEN && ($ != mouseMapX || aa != G)) {
+	if (null != g && g.readyState == g.OPEN && ($ != mouseMapX || aa != mouseMapY)) {
 		$ = mouseMapX;
-		aa = G;
+		aa = mouseMapY;
 		var a = new ArrayBuffer(21),
 			c = new DataView(a);
 		c.setUint8(0, 16);
 		c.setFloat64(1, mouseMapX, true);
-		c.setFloat64(9, G, true);
+		c.setFloat64(9, mouseMapY, true);
 		c.setUint32(17, 0, true);
 		g.send(a)
 	}
@@ -353,7 +353,7 @@ else {
 		clientX = 0,
 		clientY = 0,
 		mouseMapX = -1,
-		G = -1,
+		mouseMapY = -1,
 		ka = 0,
 		B = 0,
 		nick = null,
