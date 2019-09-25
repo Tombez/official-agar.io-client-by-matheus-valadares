@@ -208,7 +208,7 @@ function ja() {
 	for (var a = 0, c = 0; c < myCells.length; c++) a +=
 		myCells[c].size;
 	a = Math.pow(Math.min(64 / a, 1), .25) * Math.max(height / 965, width / 1920);
-	p = (9 * p + a) / 10
+	cameraZoom = (9 * cameraZoom + a) / 10
 }
 
 function O() {
@@ -230,9 +230,9 @@ function O() {
 	d.fillStyle = "#000000";
 	d.strokeStyle = "#000000";
 	d.globalAlpha = .2;
-	d.scale(p, p);
-	c = width / p;
-	b = height / p;
+	d.scale(cameraZoom, cameraZoom);
+	c = width / cameraZoom;
+	b = height / cameraZoom;
 	for (f = -.5 + (-cameraX + c / 2) % 50; f < c; f += 50) d.beginPath(), d.moveTo(f, 0), d.lineTo(f, b), d.stroke();
 	for (f = -.5 + (-cameraY + b / 2) % 50; f < b; f += 50) d.beginPath(), d.moveTo(0, f), d.lineTo(c, f), d.stroke();
 	d.restore();
@@ -241,7 +241,7 @@ function O() {
 	});
 	d.save();
 	d.translate(width / 2, height / 2);
-	d.scale(p, p);
+	d.scale(cameraZoom, cameraZoom);
 	d.translate(-cameraX, -cameraY);
 	for (f = 0; f < deadCells.length; f++) deadCells[f].draw();
 	for (f = 0; f < cells.length; f++) cells[f].draw();
@@ -361,7 +361,7 @@ else {
 		mapMinY = 0,
 		mapMaxX = 1E4,
 		mapMaxY = 1E4,
-		p = 1;
+		cameraZoom = 1;
 	window.setNick = function(a) {
 		nick = a;
 		Y();
@@ -450,7 +450,7 @@ else {
 			}
 		},
 		getNumPoints: function() {
-			return ~~Math.max(this.size * p * v, this.isVirus ? 10 : 5)
+			return ~~Math.max(this.size * cameraZoom * v, this.isVirus ? 10 : 5)
 		},
 		movePoints: function() {
 			this.createPoints();
@@ -508,7 +508,7 @@ else {
 			return a
 		},
 		draw: function() {
-			if (!(this.x + this.size + 20 < cameraX - width / 2 / p || this.y + this.size + 20 < cameraY - height / 2 / p || this.x - this.size - 20 > cameraX + width / 2 / p || this.y - this.size - 20 > cameraY + height / 2 / p)) {
+			if (!(this.x + this.size + 20 < cameraX - width / 2 / cameraZoom || this.y + this.size + 20 < cameraY - height / 2 / cameraZoom || this.x - this.size - 20 > cameraX + width / 2 / cameraZoom || this.y - this.size - 20 > cameraY + height / 2 / cameraZoom)) {
 				d.save();
 				this.drawTime = tickTime;
 				var a = this.updatePos();
