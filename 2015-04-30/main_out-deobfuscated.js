@@ -124,13 +124,13 @@ function fa(a) {
 }
 
 function ha(a) {
-	B = +new Date;
+	tickTime = +new Date;
 	for (var c = Math.random(), b = 1, f = a.getUint16(b,
 			true), b = b + 2, d = 0; d < f; ++d) {
 		var e = cellsById[a.getUint32(b, true)],
 			k = cellsById[a.getUint32(b + 4, true)],
 			b = b + 8;
-		e && k && (-1 != myCells.indexOf(k) && 1 == myCells.length && jQuery("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = B)
+		e && k && (-1 != myCells.indexOf(k) && 1 == myCells.length && jQuery("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = tickTime)
 	}
 	for (;;) {
 		f = a.getUint32(b, true);
@@ -157,7 +157,7 @@ function ha(a) {
 		m.ny = e;
 		m.nSize = k;
 		m.updateCode = c;
-		m.updateTime = B; - 1 != myCellIds.indexOf(f) && -1 == myCells.indexOf(m) && (document.getElementById("overlays").style.display = "none", myCells.push(m), 1 == myCells.length && (cameraX = m.x, cameraY = m.y))
+		m.updateTime = tickTime; - 1 != myCellIds.indexOf(f) && -1 == myCells.indexOf(m) && (document.getElementById("overlays").style.display = "none", myCells.push(m), 1 == myCells.length && (cameraX = m.x, cameraY = m.y))
 	}
 	a.getUint16(b, true);
 	b += 2;
@@ -215,7 +215,7 @@ function O() {
 	var a = +new Date;
 	++ka;
 	ja();
-	B = +new Date;
+	tickTime = +new Date;
 	ca();
 	if (0 < myCells.length) {
 		for (var c = 0, b = 0, f = 0; f < myCells.length; f++) myCells[f].updatePos(), c += myCells[f].x / myCells.length, b += myCells[f].y / myCells.length;
@@ -355,7 +355,7 @@ else {
 		mouseMapX = -1,
 		mouseMapY = -1,
 		ka = 0,
-		B = 0,
+		tickTime = 0,
 		nick = null,
 		Q = 0,
 		R = 0,
@@ -493,7 +493,7 @@ else {
 		},
 		updatePos: function() {
 			var a;
-			a = (B - this.updateTime) / 120;
+			a = (tickTime - this.updateTime) / 120;
 			a = 0 > a ? 0 : 1 < a ? 1 : a;
 			a = a * a * (3 - 2 * a);
 			var c = this.getNameSize();
@@ -510,7 +510,7 @@ else {
 		draw: function() {
 			if (!(this.x + this.size + 20 < cameraX - width / 2 / p || this.y + this.size + 20 < cameraY - height / 2 / p || this.x - this.size - 20 > cameraX + width / 2 / p || this.y - this.size - 20 > cameraY + height / 2 / p)) {
 				d.save();
-				this.drawTime = B;
+				this.drawTime = tickTime;
 				var a = this.updatePos();
 				this.destroyed && (d.globalAlpha *= 1 - a);
 				this.movePoints();
