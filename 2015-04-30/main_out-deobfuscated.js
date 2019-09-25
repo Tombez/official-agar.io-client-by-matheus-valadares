@@ -27,14 +27,14 @@ function loadHandler() {
 function ca() {
 	for (var a =
 			Number.POSITIVE_INFINITY, c = Number.POSITIVE_INFINITY, b = Number.NEGATIVE_INFINITY, f = Number.NEGATIVE_INFINITY, z = 0, e = 0; e < l.length; e++) z = Math.max(l[e].size, z), a = Math.min(l[e].x, a), c = Math.min(l[e].y, c), b = Math.max(l[e].x, b), f = Math.max(l[e].y, f);
-	P = QUAD.init({
+	quadtree = QUAD.init({
 		minX: a - (z + 100),
 		minY: c - (z + 100),
 		maxX: b + (z + 100),
 		maxY: f + (z + 100)
 	});
 	for (e = 0; e < l.length; e++)
-		for (a = l[e], c = 0; c < a.points.length; ++c) P.insert(a.points[c])
+		for (a = l[e], c = 0; c < a.points.length; ++c) quadtree.insert(a.points[c])
 }
 
 function M() {
@@ -340,7 +340,7 @@ function Cell(a, c, b, f, d, e) {
 }
 if ("agar.io" != window.location.hostname && "localhost" != window.location.hostname) window.location = "http://agar.io/";
 else {
-	var canvas, d, width, height, P = null,
+	var canvas, d, width, height, quadtree = null,
 		g = null,
 		s = 0,
 		t = 0,
@@ -470,7 +470,7 @@ else {
 					m = this,
 					n = a[e].x,
 					p = a[e].y;
-				P.retrieve({
+				quadtree.retrieve({
 					x: n - 5,
 					y: p - 5,
 					w: 10,
