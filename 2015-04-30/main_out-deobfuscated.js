@@ -92,7 +92,7 @@ function ga(a) {
 }
 
 function fa(a) {
-	function c() {
+	function readString() {
 		for (var a = "";;) {
 			var c = f.getUint16(b, true);
 			b += 2;
@@ -111,7 +111,8 @@ function fa(a) {
 			myCellIds.push(f.getUint32(1, true));
 			break;
 		case 48:
-			for (leaderboardNames = []; b < f.byteLength;) leaderboardNames.push(c());
+			for (leaderboardNames = []; b < f.byteLength;)
+				leaderboardNames.push(readString());
 			ia();
 			break;
 		case 64:
