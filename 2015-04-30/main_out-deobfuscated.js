@@ -105,7 +105,7 @@ function readMessage(a) {
 		f = new DataView(a.data);
 	switch (f.getUint8(0)) {
 		case 16:
-			ha(f);
+			readGameUpdate(f);
 			break;
 		case 32:
 			myCellIds.push(f.getUint32(1, true));
@@ -120,7 +120,7 @@ function readMessage(a) {
 	}
 }
 
-function ha(a) {
+function readGameUpdate(a) {
 	tickTime = +new Date;
 	for (var c = Math.random(), b = 1, f = a.getUint16(b,
 			true), b = b + 2, d = 0; d < f; ++d) {
