@@ -68,7 +68,7 @@ function X(a) {
 	socket = new WebSocket(a);
 	socket.binaryType = "arraybuffer";
 	socket.onopen = ea;
-	socket.onmessage = fa;
+	socket.onmessage = readMessage;
 	socket.onclose = ga;
 	socket.onerror = function() {
 		console.log("socket error")
@@ -91,7 +91,7 @@ function ga(a) {
 	setTimeout(requestServerIP, 500)
 }
 
-function fa(a) {
+function readMessage(a) {
 	function readString() {
 		for (var a = "";;) {
 			var c = f.getUint16(b, true);
