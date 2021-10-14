@@ -122,8 +122,8 @@ function readMessage(a) {
 
 function readGameUpdate(a) {
 	tickTime = +new Date;
-	for (var c = Math.random(), b = 1, f = a.getUint16(b,
-			true), b = b + 2, d = 0; d < f; ++d) {
+	var updateCode = Math.random();
+	for (var b = 1, f = a.getUint16(b, true), b = b + 2, d = 0; d < f; ++d) {
 		var e = cellsById[a.getUint32(b, true)],
 			k = cellsById[a.getUint32(b + 4, true)],
 			b = b + 8;
@@ -153,15 +153,15 @@ function readGameUpdate(a) {
 		m.nx = d;
 		m.ny = e;
 		m.nSize = k;
-		m.updateCode = c;
+		m.updateCode = updateCode;
 		m.updateTime = tickTime; - 1 != myCellIds.indexOf(f) && -1 == myCells.indexOf(m) && (document.getElementById("overlays").style.display = "none", myCells.push(m), 1 == myCells.length && (cameraX = m.x, cameraY = m.y))
 	}
 	a.getUint16(b, true);
 	b += 2;
 	e = a.getUint32(b, true);
 	b += 4;
-	for (d = 0; d < e; d++) f = a.getUint32(b, true), b += 4, cellsById[f] && (cellsById[f].updateCode = c);
-	for (d = 0; d < cells.length; d++) cells[d].updateCode != c && cells[d--].destroy()
+	for (d = 0; d < e; d++) f = a.getUint32(b, true), b += 4, cellsById[f] && (cellsById[f].updateCode = updateCode);
+	for (d = 0; d < cells.length; d++) cells[d].updateCode != updateCode && cells[d--].destroy()
 }
 
 function U() {
