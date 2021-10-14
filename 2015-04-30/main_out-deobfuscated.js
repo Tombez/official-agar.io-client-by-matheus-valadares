@@ -124,10 +124,10 @@ function readGameUpdate(a) {
 	tickTime = +new Date;
 	var updateCode = Math.random();
 	for (var b = 1, f = a.getUint16(b, true), b = b + 2, d = 0; d < f; ++d) {
-		var e = cellsById[a.getUint32(b, true)],
-			k = cellsById[a.getUint32(b + 4, true)],
+		var e = cellsById[a.getUint32(b, true)];
+		var eaten = cellsById[a.getUint32(b + 4, true)],
 			b = b + 8;
-		e && k && (-1 != myCells.indexOf(k) && 1 == myCells.length && jQuery("#overlays").fadeIn(3E3), k.destroy(), k.ox = k.x, k.oy = k.y, k.oSize = k.size, k.nx = e.x, k.ny = e.y, k.nSize = 1, k.updateTime = tickTime)
+		e && eaten && (-1 != myCells.indexOf(eaten) && 1 == myCells.length && jQuery("#overlays").fadeIn(3E3), eaten.destroy(), eaten.ox = eaten.x, eaten.oy = eaten.y, eaten.oSize = eaten.size, eaten.nx = e.x, eaten.ny = e.y, eaten.nSize = 1, eaten.updateTime = tickTime)
 	}
 	for (;;) {
 		f = a.getUint32(b, true);
