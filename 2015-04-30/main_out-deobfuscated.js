@@ -17,7 +17,7 @@ function loadHandler() {
 		32 == a.keyCode && null != socket && socket.readyState == socket.OPEN &&
 		(a = new ArrayBuffer(1), (new DataView(a)).setUint8(0, 17), socket.send(a))
 	};
-	N();
+	requestServerIP();
 	window.onresize = V;
 	V();
 	window.requestAnimationFrame ? window.requestAnimationFrame(W) : setInterval(O, 1E3 / 60);
@@ -42,10 +42,10 @@ function M() {
 	mouseMapY = clientY + cameraY - height / 2
 }
 
-function N() {
+function requestServerIP() {
 	jQuery.ajax("http://m.agar.io/", {
 		error: function() {
-			setTimeout(N, 1E3)
+			setTimeout(requestServerIP, 1E3)
 		},
 		success: function(a) {
 			a = a.split("\n");
@@ -55,10 +55,6 @@ function N() {
 		method: "GET",
 		cache: false
 	})
-}
-
-function da() {
-	N()
 }
 
 function X(a) {
@@ -92,7 +88,7 @@ function ea(a) {
 
 function ga(a) {
 	console.log("socket close");
-	setTimeout(da, 500)
+	setTimeout(requestServerIP, 500)
 }
 
 function fa(a) {
