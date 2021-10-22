@@ -18,8 +18,8 @@ function loadHandler() {
 		(a = new ArrayBuffer(1), (new DataView(a)).setUint8(0, 17), socket.send(a))
 	};
 	requestServerIP();
-	window.onresize = V;
-	V();
+	window.onresize = resizeGame;
+	resizeGame();
 	window.requestAnimationFrame ? window.requestAnimationFrame(animationLoop) : setInterval(updateGame, 1E3 / 60);
 	setInterval(U, 100)
 }
@@ -193,7 +193,7 @@ function animationLoop() {
 	window.requestAnimationFrame(animationLoop)
 }
 
-function V() {
+function resizeGame() {
 	width = window.innerWidth;
 	height = window.innerHeight;
 	canvas.width = width;
