@@ -4,13 +4,13 @@ function loadHandler() {
 	canvas.onmousedown = function(a) {
 		clientX = a.clientX;
 		clientY = a.clientY;
-		M();
+		updateMousePos();
 		U()
 	};
 	canvas.onmousemove = function(a) {
 		clientX = a.clientX;
 		clientY = a.clientY;
-		M()
+		updateMousePos()
 	};
 	canvas.onmouseup = function(a) {};
 	window.onkeydown = function(a) {
@@ -37,7 +37,7 @@ function createQuadtree() {
 		for (a = cells[e], c = 0; c < a.points.length; ++c) quadtree.insert(a.points[c])
 }
 
-function M() {
+function updateMousePos() {
 	mouseMapX = clientX + cameraX - width / 2;
 	mouseMapY = clientY + cameraY - height / 2
 }
@@ -219,7 +219,7 @@ function updateGame() {
 		cameraX = (cameraX + c) / 2;
 		cameraY = (cameraY + b) / 2
 	}
-	M();
+	updateMousePos();
 	d.clearRect(0, 0, width, height);
 	d.fillStyle = "#F2FBFF";
 	d.fillRect(0, 0, width, height);
