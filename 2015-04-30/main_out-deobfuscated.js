@@ -20,7 +20,7 @@ function loadHandler() {
 	requestServerIP();
 	window.onresize = V;
 	V();
-	window.requestAnimationFrame ? window.requestAnimationFrame(W) : setInterval(updateGame, 1E3 / 60);
+	window.requestAnimationFrame ? window.requestAnimationFrame(animationLoop) : setInterval(updateGame, 1E3 / 60);
 	setInterval(U, 100)
 }
 
@@ -188,9 +188,9 @@ function Y() {
 	}
 }
 
-function W() {
+function animationLoop() {
 	updateGame();
-	window.requestAnimationFrame(W)
+	window.requestAnimationFrame(animationLoop)
 }
 
 function V() {
