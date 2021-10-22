@@ -5,7 +5,7 @@ function loadHandler() {
 		clientX = a.clientX;
 		clientY = a.clientY;
 		updateMousePos();
-		U()
+		sendMousePos()
 	};
 	canvas.onmousemove = function(a) {
 		clientX = a.clientX;
@@ -21,7 +21,7 @@ function loadHandler() {
 	window.onresize = resizeGame;
 	resizeGame();
 	window.requestAnimationFrame ? window.requestAnimationFrame(animationLoop) : setInterval(updateGame, 1E3 / 60);
-	setInterval(U, 100)
+	setInterval(sendMousePos, 100)
 }
 
 function createQuadtree() {
@@ -164,7 +164,7 @@ function readGameUpdate(a) {
 	for (d = 0; d < cells.length; d++) cells[d].updateCode != updateCode && cells[d--].destroy()
 }
 
-function U() {
+function sendMousePos() {
 	if (null != socket && socket.readyState == socket.OPEN && (mouseSentX != mouseMapX || mouseSentY != mouseMapY)) {
 		mouseSentX = mouseMapX;
 		mouseSentY = mouseMapY;
