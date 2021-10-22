@@ -67,7 +67,7 @@ function X(a) {
 	console.log("Connecting to " + a);
 	socket = new WebSocket(a);
 	socket.binaryType = "arraybuffer";
-	socket.onopen = ea;
+	socket.onopen = socketOpen;
 	socket.onmessage = readMessage;
 	socket.onclose = socketClose;
 	socket.onerror = function() {
@@ -75,7 +75,7 @@ function X(a) {
 	}
 }
 
-function ea(a) {
+function socketOpen(a) {
 	jQuery("#connecting").hide();
 	console.log("socket open");
 	a = new ArrayBuffer(5);
