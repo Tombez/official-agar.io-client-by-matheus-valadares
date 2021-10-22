@@ -24,7 +24,7 @@ function loadHandler() {
 	setInterval(U, 100)
 }
 
-function ca() {
+function createQuadtree() {
 	for (var a =
 			Number.POSITIVE_INFINITY, c = Number.POSITIVE_INFINITY, b = Number.NEGATIVE_INFINITY, f = Number.NEGATIVE_INFINITY, z = 0, e = 0; e < cells.length; e++) z = Math.max(cells[e].size, z), a = Math.min(cells[e].x, a), c = Math.min(cells[e].y, c), b = Math.max(cells[e].x, b), f = Math.max(cells[e].y, f);
 	quadtree = QUAD.init({
@@ -213,7 +213,7 @@ function O() {
 	++frameCount;
 	ja();
 	tickTime = +new Date;
-	ca();
+	createQuadtree();
 	if (0 < myCells.length) {
 		for (var c = 0, b = 0, f = 0; f < myCells.length; f++) myCells[f].updatePos(), c += myCells[f].x / myCells.length, b += myCells[f].y / myCells.length;
 		cameraX = (cameraX + c) / 2;
