@@ -201,7 +201,7 @@ function resizeGame() {
 	updateGame()
 }
 
-function ja() {
+function updateCameraZoom() {
 	for (var a = 0, c = 0; c < myCells.length; c++) a +=
 		myCells[c].size;
 	a = Math.pow(Math.min(64 / a, 1), .25) * Math.max(height / 965, width / 1920);
@@ -211,7 +211,7 @@ function ja() {
 function updateGame() {
 	var a = +new Date;
 	++frameCount;
-	ja();
+	updateCameraZoom();
 	tickTime = +new Date;
 	createQuadtree();
 	if (0 < myCells.length) {
