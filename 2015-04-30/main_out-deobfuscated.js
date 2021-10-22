@@ -69,7 +69,7 @@ function X(a) {
 	socket.binaryType = "arraybuffer";
 	socket.onopen = ea;
 	socket.onmessage = readMessage;
-	socket.onclose = ga;
+	socket.onclose = socketClose;
 	socket.onerror = function() {
 		console.log("socket error")
 	}
@@ -86,7 +86,7 @@ function ea(a) {
 	Y()
 }
 
-function ga(a) {
+function socketClose(a) {
 	console.log("socket close");
 	setTimeout(requestServerIP, 500)
 }
