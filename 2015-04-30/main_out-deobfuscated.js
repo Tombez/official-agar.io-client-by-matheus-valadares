@@ -113,7 +113,7 @@ function readMessage(a) {
 		case 48:
 			for (leaderboardNames = []; b < f.byteLength;)
 				leaderboardNames.push(readString());
-			ia();
+			updateLeaderboard();
 			break;
 		case 64:
 			mapMinX = f.getFloat64(1, true), mapMinY = f.getFloat64(9, true), mapMaxX = f.getFloat64(17, true), mapMaxY = f.getFloat64(25, true), 0 == myCells.length && (cameraX = (mapMaxX + mapMinX) / 2, cameraY = (mapMaxY + mapMinY) / 2)
@@ -250,7 +250,7 @@ function updateGame() {
 	1 < v && (v = 1)
 }
 
-function ia() {
+function updateLeaderboard() {
 	if (0 != leaderboardNames.length) {
 		y = document.createElement("canvas");
 		var a =
