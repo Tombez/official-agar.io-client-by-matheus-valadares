@@ -49,7 +49,7 @@ function requestServerIP() {
 		},
 		success: function(a) {
 			a = a.split("\n");
-			X("ws://" + a[0])
+			connectToServer("ws://" + a[0])
 		},
 		dataType: "text",
 		method: "GET",
@@ -57,7 +57,7 @@ function requestServerIP() {
 	})
 }
 
-function X(a) {
+function connectToServer(a) {
 	myCellIds = [];
 	myCells = [];
 	cellsById = {};
@@ -364,7 +364,7 @@ else {
 		Y();
 		jQuery("#overlays").hide()
 	};
-	window.connect = X;
+	window.connect = connectToServer;
 	var mouseSentX = -1,
 		mouseSentY = -1,
 		y = null,
