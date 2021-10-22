@@ -20,7 +20,7 @@ function loadHandler() {
 	requestServerIP();
 	window.onresize = V;
 	V();
-	window.requestAnimationFrame ? window.requestAnimationFrame(W) : setInterval(O, 1E3 / 60);
+	window.requestAnimationFrame ? window.requestAnimationFrame(W) : setInterval(updateGame, 1E3 / 60);
 	setInterval(U, 100)
 }
 
@@ -189,7 +189,7 @@ function Y() {
 }
 
 function W() {
-	O();
+	updateGame();
 	window.requestAnimationFrame(W)
 }
 
@@ -198,7 +198,7 @@ function V() {
 	height = window.innerHeight;
 	canvas.width = width;
 	canvas.height = height;
-	O()
+	updateGame()
 }
 
 function ja() {
@@ -208,7 +208,7 @@ function ja() {
 	cameraZoom = (9 * cameraZoom + a) / 10
 }
 
-function O() {
+function updateGame() {
 	var a = +new Date;
 	++frameCount;
 	ja();
