@@ -83,7 +83,7 @@ function socketOpen(a) {
 	c.setUint8(0, 255);
 	c.setUint32(1, 1, true);
 	socket.send(a);
-	Y()
+	sendNick()
 }
 
 function socketClose(a) {
@@ -178,7 +178,7 @@ function sendMousePos() {
 	}
 }
 
-function Y() {
+function sendNick() {
 	if (null != socket && socket.readyState == socket.OPEN && null != nick) {
 		var a = new ArrayBuffer(1 + 2 * nick.length),
 			c = new DataView(a);
@@ -361,7 +361,7 @@ else {
 		cameraZoom = 1;
 	window.setNick = function(a) {
 		nick = a;
-		Y();
+		sendNick();
 		jQuery("#overlays").hide()
 	};
 	window.connect = connectToServer;
